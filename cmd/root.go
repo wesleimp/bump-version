@@ -10,10 +10,10 @@ import (
 func Execute(version string, args []string) error {
 	app := cli.App{
 		Name:        "bump-version",
-		Usage:       "Bumps the specified version",
-		Description: "Bumps the specified version accordingly semantic versioning specification",
+		Usage:       "Bump a semantic version, following a given version fragment",
 		UsageText:   "bump-version [options...] <version>",
         Version: version,
+        HideHelpCommand: true,
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:    "fragment",
