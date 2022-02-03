@@ -51,20 +51,20 @@ bump-version [options...] <version>
 
 The available options for the `fragment` flag are `[major | feature | bug | alpha | beta | rc]`. See some examples:
 
-| fragment         | version         |   | output        |
-| ---------------- | --------------- | - | ------------- |
-| major            | 2.11.7          |   | 3.0.0         |
-| major            | 2.11.7-alpha3   |   | 3.0.0         |
-| feature          | 2.11.7          |   | 2.12.0        |
-| feature          | 2.11.7-alpha3   |   | 2.12.0        |
-| bug              | 2.11.7          |   | 2.11.8        |
-| bug              | 2.11.7-alpha3   |   | 2.11.8        |
-| alpha            | 2.11.7          |   | 2.11.7-alpha1 |
-| alpha            | 2.11.7-alpha3   |   | 2.11.7-alpha4 |
-| beta             | 2.11.7          |   | 2.11.7-beta1  |
-| beta             | 2.11.7-alpha3   |   | 2.11.7-beta1  |
-| rc               | 2.11.7          |   | 2.11.7-rc1    |
-| rc               | 2.11.7-alpha3   |   | 2.11.7-rc1    |
+| fragment         | version         | output        |
+| ---------------- | --------------- | ------------- |
+| major            | 2.11.7          | 3.0.0         |
+| major            | 2.11.7-alpha3   | 3.0.0         |
+| feature          | 2.11.7          | 2.12.0        |
+| feature          | 2.11.7-alpha3   | 2.12.0        |
+| bug              | 2.11.7          | 2.11.8        |
+| bug              | 2.11.7-alpha3   | 2.11.8        |
+| alpha            | 2.11.7          | 2.11.7-alpha1 |
+| alpha            | 2.11.7-alpha3   | 2.11.7-alpha4 |
+| beta             | 2.11.7          | 2.11.7-beta1  |
+| beta             | 2.11.7-alpha3   | 2.11.7-beta1  |
+| rc               | 2.11.7          | 2.11.7-rc1    |
+| rc               | 2.11.7-alpha3   | 2.11.7-rc1    |
 
 ## LICENSE
 
