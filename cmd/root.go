@@ -18,6 +18,15 @@ func (c Cli) Validate() error {
 		return errors.New("the parameter `VERSION` must be specified")
 	}
 
+	if c.Fragement == "" {
+		return errors.New("flag `fragment` not set. See --help for more information")
+	}
+
+	if c.Fragement != "major" && c.Fragement != "feature" && c.Fragement != "bug" &&
+		c.Fragement != "alpha" && c.Fragement != "beta" && c.Fragement != "rc" {
+		return errors.New("invalid fragment option. Possible options [major | feature | bug | alpha | beta | rc]")
+	}
+
 	return nil
 }
 
