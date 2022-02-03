@@ -17,6 +17,16 @@ type Semver struct {
 	Prerelease string
 }
 
+func (s Semver) Print() string {
+	version := fmt.Sprintf("%v.%v.%v", s.Major, s.Minor, s.Patch)
+
+	if s.Prerelease != "" {
+		version = fmt.Sprintf("%s-%s", version, s.Prerelease)
+	}
+
+	return version
+}
+
 // Bump a version accordingly the fragment
 func Bump(sv Semver, fragment string) Semver {
 	switch fragment {

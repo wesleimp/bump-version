@@ -5,7 +5,21 @@ import (
 	"fmt"
 
 	"github.com/urfave/cli/v2"
+	"github.com/wesleimp/bump-version/internal/semver"
 )
+
+type Cli struct {
+	Version   string
+	Fragement string
+}
+
+func (c Cli) Validate() error {
+	if c.Version == "" {
+		return errors.New("the parameter `VERSION` must be specified")
+	}
+
+	return nil
+}
 
 func Execute(version string, args []string) error {
 	app := cli.App{
@@ -28,13 +42,25 @@ func Execute(version string, args []string) error {
 	return app.Run(args)
 }
 
-func run(c *cli.Context) error {
-	version := c.Args().First()
-	if version == "" {
-		return errors.New("the parameter `VERSION` must be specified")
+func run(ctx *cli.Context) error {
+	c := Cli{
+		Version:   ctx.Args().First(),
+		Fragement: ctx.String("fragment"),
 	}
 
-	fmt.Println(version)
+	err := c.Validate()
+	if err != nil {
+		return err
+	}
+
+	current, err := semver.Parse(c.Version)
+	if err != nil {
+		return err
+	}
+
+	next := semver.Bump(current, c.Fragement)
+
+	fmt.Printf("create %s-version: %v -> %v\n", c.Fragement, current.Print(), next.Print())
 
 	return nil
 }
