@@ -11,6 +11,7 @@ import (
 type Cli struct {
 	Version   string
 	Fragement string
+	Plain     bool
 }
 
 func (c Cli) Validate() error {
@@ -43,6 +44,11 @@ func Execute(version string, args []string) error {
 				Aliases: []string{"f"},
 				Usage:   "The versions fragment you want to increment. Possible options: [major | feature | bug | alpha | beta | rc]",
 			},
+			&cli.BoolFlag{
+				Name:  "plain",
+				Usage: "Plain output version",
+				Value: false,
+			},
 		},
 
 		Action: run,
@@ -55,6 +61,7 @@ func run(ctx *cli.Context) error {
 	c := Cli{
 		Version:   ctx.Args().First(),
 		Fragement: ctx.String("fragment"),
+		Plain:     ctx.Bool("plain"),
 	}
 
 	err := c.Validate()
@@ -69,7 +76,11 @@ func run(ctx *cli.Context) error {
 
 	next := semver.Bump(current, c.Fragement)
 
-	fmt.Printf("create %s-version: %v -> %v\n", c.Fragement, current.Print(), next.Print())
+	if c.Plain {
+		println(next.Print())
+	} else {
+		fmt.Printf("create %s-version: %v -> %v\n", c.Fragement, current.Print(), next.Print())
+	}
 
 	return nil
 }
