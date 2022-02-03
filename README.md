@@ -8,10 +8,6 @@
 
 Download the pre-compiled binaries from the [OSS releases page](https://github.com/wesleimp/bump-version/releases) and copy them to the desired location.
 
-### deb and rpm packages
-
-Download the `.deb` or `.rpm` packages from the [OSS releases page](https://github.com/wesleimp/bump-version/releases) and install them with the appropriate tools.
-
 ### compiling from source
 
 If you just want to build from source, follow these steps:
