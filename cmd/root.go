@@ -9,11 +9,11 @@ import (
 
 func Execute(version string, args []string) error {
 	app := cli.App{
-		Name:        "bump-version",
-		Usage:       "Bump a semantic version, following a given version fragment",
-		UsageText:   "bump-version [options...] <version>",
-        Version: version,
-        HideHelpCommand: true,
+		Name:            "bump-version",
+		Usage:           "Bump a semantic version, following a given version fragment",
+		UsageText:       "bump-version [options...] <version>",
+		Version:         version,
+		HideHelpCommand: true,
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:    "fragment",
@@ -29,10 +29,10 @@ func Execute(version string, args []string) error {
 }
 
 func run(c *cli.Context) error {
-    version := c.Args().First()
-    if version == "" {
-        return errors.New("the version params must be specified")
-    }
+	version := c.Args().First()
+	if version == "" {
+		return errors.New("the parameter `VERSION` must be specified")
+	}
 
 	fmt.Println(version)
 
